@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Header from './components/Header';
+import Hero from './components/Hero';
+import ManifestRow from './components/ManifestRow';
+import SliderBlock from './components/SliderBlock';
+import Burn from './components/Burn';
+import Advantages from './components/Advantages';
+import Accompaniment from './components/Accompaniment';
+import Application from './components/Application';
+import FixedCall from './components/FixedCall';
+import Footer from './components/Footer';
+import Modal from './components/Modal';
+
+import './style/normalize.css';
+import './style/style.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Hero />
+      <ManifestRow />
+      <SliderBlock />
+      <Burn />
+      <Advantages />
+      <ManifestRow />
+      <Accompaniment />
+      <Application />
+      <Footer />
+      <FixedCall />
+      <Modal />
+    </>
   );
 }
 
