@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 import mobClose from '../../assets/img/mob-close.svg';
 import logo from '../../assets/img/logo-footer.svg';
@@ -6,7 +7,11 @@ import logo from '../../assets/img/logo-footer.svg';
 export default function MobMenu() {
   return (
     <div className="mob-menu">
-      <div className="mob-menu-close">
+      <div
+        className="mob-menu-close"
+        onClick={() => {
+          $('.mob-menu').slideUp(200);
+        }}>
         <img src={mobClose} alt="" />
       </div>
       <div className="mob-menu-logo">

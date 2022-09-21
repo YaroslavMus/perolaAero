@@ -50,6 +50,9 @@
   font-weight: 400;
   font-style: normal;
 }
+* {
+  cursor: none !important;
+}
 body {
   font-family: 'GerberaLight', 'sans-serif', Geneva;
   font-size: 14px;
@@ -82,7 +85,19 @@ ul {
 .section-blue {
   background-color: #007180;
 }
-
+.cursor {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  background-color: #00b8cc;
+  border-radius: 50%;
+  z-index: 111111;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+.cursor-scale {
+  transform: scale(1.3);
+}
 .pos-button button {
   color: #007180;
   font-size: 14px;
@@ -103,6 +118,12 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.manifest-row span {
+  font-family: 'Berlingske Serif';
+}
+.to {
+  flex-direction: row-reverse;
 }
 .manifest-img {
   text-align: center;
@@ -210,12 +231,19 @@ ul {
 .header-state-scrolling .logo {
   bottom: 16px;
 }
+.logo-img img {
+  width: 55px;
+}
 .logo-img {
   margin-bottom: 8px;
 }
 .header-state-scrolling a:not(.back-link) {
   opacity: 0;
   pointer-events: none;
+}
+
+.logo-text img {
+  width: 180px;
 }
 .header-contacts path,
 .logo-img path,
@@ -446,7 +474,6 @@ h3 {
   transform: translateX(-50%);
 }
 .burn-bg img {
-  max-height: 715px;
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
@@ -727,7 +754,8 @@ h3 {
   height: 100%;
   z-index: 111;
 }
-.modal-order-input-core input {
+.modal-order-input-core input,
+.modal-order-input select {
   background-color: #fff;
   color: #003b5c;
   font-size: 16px;
@@ -736,15 +764,20 @@ h3 {
   outline: 0;
   width: 100%;
 }
+.modal-order-input select {
+  padding: 19px;
+  height: 62.39px;
+}
 .modal-order-inputs {
   display: flex;
+  align-items: end;
 }
 .modal-order-input-title {
   font-size: 10px;
   color: #fff;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin: 0px 0px 10px 20px;
   font-weight: 200;
 }
 .modal-logo {
@@ -755,12 +788,12 @@ h3 {
   display: flex;
   align-items: center;
 }
-.modal-order-inputs > .modal-order-input:last-child .modal-order-input-core,
-.modal-order-inputs > .modal-order-input:last-child .modal-order-input-core input {
-  border-radius: 0 9px 9px 0;
+.modal-btn {
+  width: 20%;
 }
-.modal-right {
-  padding-top: 18px;
+.modal-btn button {
+  border-radius: 0px 10px 10px 0px;
+  padding: 23px 47px;
 }
 .modal-order-input {
   margin-right: 1px;
@@ -777,9 +810,6 @@ h3 {
 .modal-order-input-core input:hover::placeholder {
   color: #003b5c;
 }
-.modal-order-input:first-child .modal-order-input-core input {
-  border-radius: 9px 0 0 9px;
-}
 .modal-order-input-core {
   position: relative;
 }
@@ -793,14 +823,10 @@ h3 {
   color: #fff;
 }
 .modal-left {
-  margin-right: 10px;
-  max-width: 1010px;
-}
-.modal-order-inputs .modal-order-input {
-  width: 25%;
+  max-width: 1220px;
 }
 .modal-order-date .modal-order-input {
-  width: 50%;
+  width: 100%;
 }
 .modal-order-date {
   position: relative;
@@ -970,9 +996,6 @@ h3 {
   flex-direction: column;
   display: flex;
 }
-.modal-order-input-count input {
-  border-radius: 0 9px 9px 0;
-}
 .modal-order-input input {
   border: 1px solid transparent;
 }
@@ -1013,8 +1036,7 @@ h3 {
 .submit-btn:hover {
   background-color: #02aec0;
 }
-.form-line-checkbox label,
-.swiper-p-buttons {
+.form-line-checkbox label {
   display: flex;
   align-items: center;
 }
@@ -1108,6 +1130,320 @@ h1,
 h2,
 h4 {
   text-transform: uppercase;
+}
+.modal-order-input-from input {
+  border-radius: 10px 0px 0px 10px;
+}
+.select {
+  position: relative;
+  display: block;
+  width: 403px;
+}
+
+.select__head {
+  height: 62.39px;
+  font-size: 16px;
+  line-height: 120%;
+  padding: 21px;
+  color: #003b5c;
+  cursor: pointer;
+  background: white;
+}
+.select__head::after {
+  width: 16px;
+  height: 10px;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 15px;
+  bottom: 50%;
+  transform: translateY(50%);
+  content: '';
+  display: block;
+  transition: 0.2s ease-in;
+  background: url(../assets/img/polygon.svg);
+  background-repeat: no-repeat;
+}
+.select__list {
+  display: none;
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 5px;
+  max-height: 205px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  scrollbar-color: dark;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+  font-size: 16px;
+  line-height: 120%;
+  color: rgba(0, 59, 92, 0.5);
+}
+.select__list::-webkit-scrollbar {
+  width: 7px;
+  background-color: #f8f9fa;
+  padding: 5px;
+}
+
+.select__list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #d9d9d9;
+}
+
+.select__list .select__item {
+  position: relative;
+  padding: 10px 21px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.select__list .select__item:hover {
+  background-color: rgba(224, 229, 231, 0.5);
+}
+
+/* Calendar  */
+.react-datepicker__input-container::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 30%;
+  right: 5%;
+  width: 18px;
+  height: 19px;
+  background: url(../assets/img/datepicker.svg);
+  background-repeat: no-repeat;
+}
+.input-calendar {
+  position: relative;
+}
+
+.input-calendar-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+  height: 315px;
+  top: 100%;
+  right: 0%;
+  left: -20%;
+  background: white;
+}
+.react-datepicker {
+  border: none;
+  display: block;
+  width: 260px;
+  margin: 95px auto;
+}
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle::after,
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle::before {
+  display: none;
+}
+.react-datepicker-popper {
+  width: 340px;
+  height: 315px;
+  background: white;
+  inset: 3px auto auto -66px !important;
+}
+.react-datepicker__current-month {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: #00b8cc;
+}
+.react-datepicker__day-name {
+  font-size: 12px;
+  line-height: 120%;
+  text-align: center;
+  color: rgba(0, 59, 92, 0.6);
+}
+.react-datepicker__header {
+  background-color: white;
+  border: none;
+}
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  font-size: 14px;
+  line-height: 120%;
+  width: 18px;
+  height: auto;
+  margin: 0px;
+  margin-top: 8px;
+  margin-right: 18px;
+}
+.react-datepicker__navigation {
+  border-radius: 50%;
+  background: #00b8cc;
+}
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker__navigation-icon::before {
+  height: 4px;
+  top: 10px;
+  width: 4px;
+  border-width: 2px 2px 0 0;
+  border-color: white;
+}
+.react-datepicker__navigation-icon--next::before {
+  left: -2px;
+}
+.react-datepicker__navigation-icon--previous::before {
+  right: -2px;
+}
+.react-datepicker__navigation {
+  height: 21px;
+  width: 21px;
+  top: 60px;
+}
+.react-datepicker__navigation--previous {
+  left: -52px;
+}
+.react-datepicker__navigation--next {
+  right: -52px;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  background-color: #00b8cc;
+}
+.react-datepicker__day--keyboard-selected:hover,
+.react-datepicker__month-text--keyboard-selected:hover,
+.react-datepicker__quarter-text--keyboard-selected:hover,
+.react-datepicker__year-text--keyboard-selected:hover {
+  background-color: #00b8cc;
+}
+
+.datepicker-calendar-text {
+  display: none;
+  position: absolute;
+  bottom: -80%;
+  width: 249px;
+  left: -10%;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #007180;
+  z-index: 100;
+}
+.info-form input,
+.info-form textarea {
+  width: 100%;
+  border: 0 !important;
+  outline: 0 !important;
+}
+.info-form input {
+  padding: 23px 21px;
+  border-bottom: 1px solid #007180;
+}
+.info-form textarea {
+  resize: none;
+  padding: 23px 20px;
+  display: block;
+  height: 124px;
+  border-radius: 0px 0px 10px 0px;
+}
+.info-form > div:first-child input {
+  border-radius: 0 10px 0 0;
+}
+.info-form input::-moz-placeholder,
+.info-form textarea::-moz-placeholder {
+  color: rgba(0, 59, 92, 0.5);
+}
+.info-form input:-ms-input-placeholder,
+.info-form textarea:-ms-input-placeholder {
+  color: rgba(0, 59, 92, 0.5);
+}
+.info-form input::placeholder,
+.info-form textarea::placeholder {
+  color: rgba(0, 59, 92, 0.5);
+}
+.info-form > div:not(:last-child) {
+  margin-bottom: 1px;
+}
+.info-form {
+  height: 100%;
+}
+.checkbox-view {
+  background: #fff;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0, 113, 128, 0.8);
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.checkbox-view::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background-color: rgba(0, 113, 128, 0.8);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+}
+.checkbox-core:checked + .checkbox-view::after {
+  opacity: 1;
+}
+.checkbox-core {
+  left: -999999px;
+  position: absolute;
+}
+.form-line-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #1d1d1d;
+}
+.form-line-checkbox .checkbox-view {
+  margin-right: 10px;
+}
+.modal-info-bottom-2 .form-line .checkbox-view {
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+.modal-info-bottom-2 .form-line .checkbox-view::after {
+  background-color: #fff;
+}
+.modal-info-bottom-2 .form-line:not(:last-child) {
+  margin-bottom: 15px;
+}
+.step-back-mob {
+  display: none;
+  position: fixed;
+  top: 26px;
+  left: 20px;
+  opacity: 0;
+  pointer-events: none;
+}
+.step-back-mob.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.open {
+  display: block;
 }
 @media screen and (max-width: 1244px) {
   .modal-core form {
@@ -1215,8 +1551,7 @@ h4 {
   .form-line:not(:last-child) {
     margin-bottom: 26px;
   }
-  .cursor,
-  .hero-text {
+  .cursor {
     display: none;
   }
   .hero-text-mob-active {
@@ -1231,8 +1566,7 @@ h4 {
     background-position: 100% 2px;
   }
   .modal-order-date .modal-order-input-title,
-  .modal-order-input-count .modal-order-input-title,
-  .modal-right {
+  .modal-order-input-count .modal-order-input-title {
     display: none;
   }
   .modal-order-inputs {
@@ -1242,8 +1576,15 @@ h4 {
   .modal-order-inputs .modal-order-input.modal-order-input-to {
     width: calc(50% - 1px);
   }
-  .modal-order-input:first-child .modal-order-input-core input {
+
+  .modal-order-input-to input {
     border-radius: 9px 0 0 0;
+  }
+  .modal-order-input-from input {
+    border-radius: 10px 0 0 0;
+  }
+  .modal-order-date .icon-date input {
+    border-radius: 0 0 0 9px;
   }
   .modal-order-date {
     width: 50%;
@@ -1252,7 +1593,8 @@ h4 {
     width: calc(25% - 2px);
     display: block;
   }
-  .modal-order-input-from {
+  .modal-order-input-from,
+  .modal-order-input-to {
     margin-bottom: 1px;
   }
   .modal-order-input-to input {
@@ -1328,6 +1670,22 @@ h4 {
   }
   .wide-pos-img {
     width: 100vw;
+  }
+  .modal-btn {
+    width: 24.8%;
+  }
+  .modal-btn button {
+    border-radius: 0px 0px 10px 0px;
+    width: 100%;
+  }
+  .modal-order-input {
+    width: 25%;
+  }
+  .select {
+    width: 100%;
+  }
+  .modal-order-inputs {
+    width: 630px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1410,7 +1768,7 @@ h4 {
     margin-bottom: 8px;
   }
   .footer-bottom {
-    padding-top: 13px;
+    padding: 13px 20px 0px;
   }
   .fixed-call-text {
     display: none;
@@ -1428,123 +1786,10 @@ h4 {
   .fixed-call-default {
     right: calc(50% - 20px);
   }
-  .input-direction-change img,
-  .modal-order-input-title,
-  .modal-order-inputs .modal-order-input-submit {
-    display: none;
-  }
-  .modal-order-inputs .modal-order-input-count {
-    width: calc(50% - 2px);
-  }
-  .modal-order-input.modal-order-input-from {
-    margin-right: 0;
-  }
-  .modal-order-input.modal-order-input-to {
-    margin-right: 0;
-    margin-bottom: 1px;
-  }
-  .modal-order-inputs .modal-order-input.modal-order-input-from,
-  .modal-order-inputs .modal-order-input.modal-order-input-to {
-    width: 100%;
-  }
-  .modal-order-date {
-    width: 100%;
-    margin-bottom: 1px;
-  }
-  .modal-order-inputs .modal-order-input-count {
-    margin-right: 0;
-    width: 100%;
-  }
-  .input-direction-change .input-direction-change-mob {
-    display: block;
-  }
-  .modal-order-input-core input {
-    padding: 16px 20px;
-  }
-  .input-direction-change {
-    right: 14px;
-    top: 101%;
-  }
-  .modal-order-input-to input {
-    border-radius: 0;
-  }
-  .modal-order-input:first-child .modal-order-input-core input {
-    border-radius: 9px 9px 0 0;
-  }
-  .modal-order-input {
-    margin-right: 0;
-  }
-  .icon-date {
-    margin-right: 1px;
-  }
-  .modal-order-input-count input {
-    border-radius: 0 0 9px 9px !important;
-  }
-  .modal-core form {
-    flex-wrap: wrap;
-  }
-  .modal-right {
-    display: block;
-    width: 100%;
-    padding-top: 35px;
-  }
-  .submit-btn {
-    width: 100%;
-  }
-  .c-calendar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .c-calendar-a-next,
-  .c-calendar-a-prev {
-    display: none;
-  }
-  .c-calendar-core:first-child {
-    margin-right: 0;
-  }
-  .c-calendar-core {
-    margin-right: 0;
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .c-calendar-body {
-    flex-wrap: wrap;
-  }
-  .c-calendar-one,
-  .hero-text-back img,
-  .hero-text-back span {
-    display: none;
-  }
-  .c-calendar {
-    padding: 40px 20px;
-  }
-  .c-calendar-days {
-    width: 280px;
-  }
-  .close-calendar-mob {
-    display: block;
-  }
-  .c-calendar-tip {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
+
   .mob-one {
     display: block;
     margin-top: 50px;
-  }
-  .c-calendar-nab-nav {
-    display: flex;
-  }
-  .c-calendar-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .c-calendar-tip {
-    margin-bottom: 31px;
   }
   .modal-info,
   .modal-info-bottom {
@@ -1586,18 +1831,6 @@ h4 {
   .modal-logo {
     margin-bottom: 32px;
   }
-  .input-direction-change img,
-  .modal-order-input-title,
-  .modal-order-inputs .modal-order-input-submit {
-    display: none;
-  }
-  .input-direction-change .input-direction-change-mob {
-    display: block;
-  }
-  .input-direction-change {
-    right: 14px;
-    top: 101%;
-  }
   .contact-form .form-line input {
     margin-bottom: 30px;
   }
@@ -1610,8 +1843,11 @@ h4 {
   .burn-content div:nth-child(1) {
     font-size: 36px;
   }
+  .step-back-mob {
+    z-index: 111;
+  }
 }
-@media screen and (max-width: 669px) {
+@media screen and (max-width: 697px) {
   .container {
     padding: 0px 20px;
   }
@@ -1647,6 +1883,7 @@ h4 {
     line-height: 135%;
   }
   .footer-bottom {
+    padding: 13px 20px;
     flex-direction: column;
   }
   .footer-logo img {
@@ -1683,5 +1920,60 @@ h4 {
   .burn-content div:nth-child(2) {
     font-size: 12px;
     line-height: 160%;
+  }
+  .modal-order-inputs {
+    width: 280px;
+  }
+  .modal-order-inputs .modal-order-input.modal-order-input-from,
+  .modal-order-inputs .modal-order-input.modal-order-input-to,
+  .modal-order-date,
+  .modal-order-input,
+  .modal-btn {
+    width: 100%;
+  }
+  .modal-order-input {
+    margin: 1px 0px;
+  }
+  .modal-order-input-title {
+    display: none;
+  }
+  .modal-order-input-to input,
+  .modal-order-input:first-child .modal-order-input-core input {
+    border-radius: 0;
+  }
+  .modal-btn button {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .input-direction-change {
+    right: 9px;
+    top: 100%;
+  }
+  .input-direction-change img:nth-child(1) {
+    display: none;
+  }
+  .input-direction-change-mob {
+    display: block;
+  }
+  .autocomplete-from {
+    border-radius: 10px 10px 0 0 !important;
+  }
+  .react-datepicker-popper {
+    inset: 3px auto auto -11px !important;
+  }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    margin-top: 8px;
+    margin-right: 24px;
+  }
+  .react-datepicker {
+    width: 280px;
+    margin: 65px auto;
+  }
+  .datepicker-calendar-text {
+    left: 5%;
+  }
+  .info-form textarea {
+    border-radius: 0px 0px 10px 10px;
   }
 }

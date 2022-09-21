@@ -34,10 +34,10 @@ export default function Footer() {
             </ul>
           </nav>
         </div>
-        <div className="footer-bottom">
-          <a href="#"> политика конфиденциальности </a>
-          <a href="#"> правила использования </a>
-        </div>
+      </div>
+      <div className="footer-bottom">
+        <a href="#"> политика конфиденциальности </a>
+        <a href="#"> правила использования </a>
       </div>
     </footer>
   );
