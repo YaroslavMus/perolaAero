@@ -19,6 +19,20 @@ export default function Modal() {
         <div className="modal-logo">
           <img src={modalLogo} alt="" />
         </div>
+        <div className="modal-nav">
+          <div>
+            <input type="radio" name="radio" id="one" />
+            <label className="modal-nav-input" htmlFor="one">
+              доставка
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="radio" id="two" />
+            <label className="modal-nav-input" htmlFor="two">
+              сопровождение
+            </label>
+          </div>
+        </div>
         <div className="modal-steps">
           <ModalStepLeft />
           <ModalStepRight />

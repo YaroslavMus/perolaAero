@@ -8,6 +8,7 @@ export default function FixedClose() {
   const closeModal = () => {
     $('.fixed-modal-overlay').removeClass('active');
     $('.modal').removeClass('active');
+    $('body').removeClass('no-scroll');
     $('.modal-info-holder').css('display', 'block');
     $('.modal-thanks').css('display', 'none');
     gsap.to($('modal-steps'), {

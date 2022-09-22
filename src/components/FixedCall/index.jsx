@@ -4,6 +4,7 @@ import $ from 'jquery';
 const openModal = () => {
   $('.fixed-modal-overlay').addClass('active');
   $('.modal').addClass('active');
+  $('body').addClass('no-scroll');
 };
 
 export default function FixedCall() {

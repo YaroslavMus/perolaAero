@@ -11,6 +11,7 @@ export default function MobMenu() {
         className="mob-menu-close"
         onClick={() => {
           $('.mob-menu').slideUp(200);
+          $('body').removeClass('no-scroll');
         }}>
         <img src={mobClose} alt="" />
       </div>

@@ -17,7 +17,7 @@ export default function ModalForm() {
               <div className="modal-order-input modal-order-input-from">
                 <div className="modal-order-input-title">откуда</div>
                 <div className="modal-order-input-core">
-                  <input type="text" className="autocomplete-from" />
+                  <input type="text" placeholder="Откуда" className="autocomplete-from" />
                   <div className="input-direction-change">
                     <img src={directionChange} alt="" />
                     <img src={directionChangeV} alt="" className="input-direction-change-mob" />
@@ -27,7 +27,7 @@ export default function ModalForm() {
               <div className="modal-order-input modal-order-input-to">
                 <div className="modal-order-input-title">КУДА</div>
                 <div className="modal-order-input-core">
-                  <input type="text" className="autocomplete-to" />
+                  <input type="text" placeholder="Куда" className="autocomplete-to" />
                 </div>
               </div>
               <ModalOrderDate />

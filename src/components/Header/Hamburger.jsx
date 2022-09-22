@@ -7,6 +7,7 @@ export default function Hamburger() {
       className="hamburger"
       onClick={() => {
         $('.mob-menu').slideDown(200);
+        $('body').addClass('no-scroll');
       }}>
       <div></div>
       <div></div>
