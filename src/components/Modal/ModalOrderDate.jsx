@@ -28,28 +28,19 @@ const locale = {
 };
 export default function ModalOrderDate() {
   const [startDate, setStartDate] = React.useState(new Date());
-  const openDatepicker = () => {
-    $('.icon-date').on('click', function () {
-      $('.datepicker-calendar-text').addClass('open');
-    });
-    $(document).click(function (e) {
-      if (!$(e.target).closest('.icon-date').length) {
-        $('.datepicker-calendar-text').removeClass('open');
-      }
-    });
-  };
+
   return (
     <div className="modal-order-date">
       <div className="modal-order-input">
         <div className="modal-order-input-title">КОГДА</div>
-        <div className="modal-order-input-core icon-date " onClick={openDatepicker}>
+        <div className="modal-order-input-core icon-date ">
           <DatePicker
             className="input-calendar"
             locale={locale}
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-          <div className="datepicker-calendar-text">Выберите дату отправления</div>
+            onChange={(date) => setStartDate(date)}>
+            <div className="datepicker-calendar-text">Выберите дату отправления</div>
+          </DatePicker>
         </div>
       </div>
     </div>

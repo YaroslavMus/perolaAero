@@ -1,15 +1,12 @@
 import React from 'react';
 import $ from 'jquery';
-import { gsap } from 'gsap';
+
+const openModal = () => {
+  $('.fixed-modal-overlay').addClass('active');
+  $('.modal').addClass('active');
+};
 
 export default function FixedCall() {
-
-
-  const openModal = () => {
-    $('.fixed-modal-overlay').addClass('active');
-    $('.modal').addClass('active');
-  };
-  
   return (
     <div className="fixed-call">
       <div className="fixed-call-body" onClick={openModal}></div>

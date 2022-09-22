@@ -2,7 +2,6 @@ import React from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PerolaSkyIllustration from '../../assets/img/Perola_Sky_Illustration_1_1.png';
 import PerolaSkyIllustrationTo from '../../assets/img/Perola_Sky_Illustration_1_2.png';
 
 export default function ManifestRow() {
@@ -24,7 +23,7 @@ export default function ManifestRow() {
   }, []);
 
   return (
-    <section className="section-h-trigger section desc" data-section="light">
+    <section className="section-h-trigger section desc" data-section-trigger="light">
       <div className="container">
         <div className="manifest-row to">
           <div className="manifest-text">

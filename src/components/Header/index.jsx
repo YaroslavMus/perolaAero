@@ -17,9 +17,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
-
-
   return (
     <>
       <header className={isHederScroll < 100 ? 'header' : 'header header-state-scrolling'}>

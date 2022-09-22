@@ -11,9 +11,9 @@ export default function SliderPanorama() {
       <div className="burn">
         <div className="burn-bg">
           <picture>
-            <source media="(max-width: 1440px)" srcSet={bac2} />
-            <source media="(max-width: 770px)" srcSet={bac3} />
-            <source media="(max-width: 320px)" srcSet={bac4} />
+            <source type='image/jpeg' media="(max-width: 1440px)" srcSet={bac2} />
+            <source type='image/jpeg' media="(max-width: 770px)" srcSet={bac3} />
+            <source type='image/jpeg' media="(max-width: 320px)" srcSet={bac4} />
             <img src={bac1} alt="" />
           </picture>
         </div>

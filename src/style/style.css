@@ -174,7 +174,7 @@ ul {
 }
 .header-row {
   justify-content: space-between;
-  padding: 40px 0;
+  padding: 45px 0;
 }
 .header-contacts ul,
 .header-nav ul,
@@ -231,11 +231,10 @@ ul {
 .header-state-scrolling .logo {
   bottom: 16px;
 }
-.logo-img img {
-  width: 55px;
-}
-.logo-img {
-  margin-bottom: 8px;
+
+.back-link svg {
+  width: 48px;
+  fill: white;
 }
 .header-state-scrolling a:not(.back-link) {
   opacity: 0;
@@ -474,6 +473,7 @@ h3 {
   transform: translateX(-50%);
 }
 .burn-bg img {
+  display: block;
   width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
@@ -607,6 +607,9 @@ h3 {
   left: 32px;
   top: 70px;
 }
+.footer-logo img {
+  width: 150px;
+}
 .footer-row {
   display: flex;
   justify-content: flex-end;
@@ -634,6 +637,14 @@ h3 {
 }
 .footer-bottom a {
   transition: all 0.2s ease;
+}
+.footer a:hover::after {
+  width: 100%;
+}
+.fixed-call-dark,
+.footer-bottom a:hover,
+.form-line-checkbox a:hover {
+  color: #00b8cc;
 }
 
 /* fixed-call */
@@ -779,6 +790,9 @@ h3 {
   text-transform: uppercase;
   margin: 0px 0px 10px 20px;
   font-weight: 200;
+}
+.modal-logo img {
+  width: 150px;
 }
 .modal-logo {
   text-align: center;
@@ -1081,7 +1095,7 @@ form-line-checkbox a {
   width: 100%;
   height: 100%;
   background-color: #007180;
-  z-index: 111;
+  z-index: 112;
   padding: 110px 15px 0;
   text-align: center;
 }
@@ -1092,6 +1106,9 @@ form-line-checkbox a {
 }
 .mob-menu-logo {
   margin-bottom: 85px;
+}
+.mob-menu-logo img {
+  width: 150px;
 }
 .mob-menu-list a {
   font-size: 14px;
@@ -1215,7 +1232,7 @@ h4 {
   top: 30%;
   right: 5%;
   width: 18px;
-  height: 19px;
+  height: 20px;
   background: url(../assets/img/datepicker.svg);
   background-repeat: no-repeat;
 }
@@ -1332,17 +1349,17 @@ h4 {
 }
 
 .datepicker-calendar-text {
-  display: none;
   position: absolute;
-  bottom: -80%;
-  width: 249px;
-  left: -10%;
+  bottom: 0%;
+  width: 270px;
+  left: 0%;
   font-size: 14px;
   line-height: 120%;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #007180;
   z-index: 100;
+  margin-bottom: 40px;
 }
 .info-form input,
 .info-form textarea {
@@ -1445,6 +1462,18 @@ h4 {
 .open {
   display: block;
 }
+@media screen and (max-width: 1441px) {
+  .hamburger {
+    display: block;
+  }
+  .header-contacts,
+  .header-nav {
+    display: none;
+  }
+  .back-link svg {
+    margin-top: 20px;
+  }
+}
 @media screen and (max-width: 1244px) {
   .modal-core form {
     padding: 0 15px;
@@ -1507,10 +1536,10 @@ h4 {
     display: none;
   }
   .logo img {
-    width: 100px;
+    width: 150px;
   }
   .header .logo {
-    bottom: -39px;
+    bottom: -5px;
   }
   .advantages,
   .hamburger {
@@ -1686,6 +1715,9 @@ h4 {
   }
   .modal-order-inputs {
     width: 630px;
+  }
+  .react-datepicker-popper {
+    inset: 3px auto auto -12px !important;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1958,7 +1990,7 @@ h4 {
     border-radius: 10px 10px 0 0 !important;
   }
   .react-datepicker-popper {
-    inset: 3px auto auto -11px !important;
+    inset: 3px auto auto -31px !important;
   }
   .react-datepicker__day-name,
   .react-datepicker__day,
