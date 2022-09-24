@@ -7,6 +7,7 @@ export default function ModalBtn() {
     e.preventDefault();
     let modalStepWidth = $('.modal-step').innerWidth();
     $('.modal-nav').css({ opacity: 0, display: 'none' });
+    $('.modal').css({ overflowY: 'auto' });
     gsap.to($('.modal-steps'), {
       x: -modalStepWidth,
       duration: 0.5,

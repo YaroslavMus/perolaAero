@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import { gsap } from 'gsap';
 
 import ModalThanks from './ModalThanks';
 
@@ -9,6 +10,11 @@ export default function ModalStepRight() {
     $('.step-back-mob').removeClass('active');
     $('.modal-info-holder').fadeOut(200);
     $('.modal-thanks').fadeIn(200);
+    $('.modal').css({ overflowY: 'inherit' });
+    gsap.to($('modal-steps'), {
+      x: 0,
+      duration: 0,
+    });
   };
   return (
     <div className="modal-step">
