@@ -1,10 +1,12 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PerolaSkyIllustrationTo from '../../assets/img/Perola_Sky_Illustration_1_2.png';
 
 export default function ManifestRow() {
+  const { items } = React.useContext(ItemsContext);
+
   React.useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -27,15 +29,12 @@ export default function ManifestRow() {
       <div className="container">
         <div className="manifest-row to">
           <div className="manifest-text">
-            <div className="title">ваше Спокойствие превыше всего</div>
-            <div className="desc-text">
-              <span>Каждая посылка застрахована</span>, а наш консьерж-курьер заберет и доставит
-              необходимую вещь лично в руки.
-            </div>
+            <div className="title">{items[5].titel}</div>
+            <div className="desc-text">{items[5].text}</div>
           </div>
           <div className="manifest-img">
             <picture>
-              <img src={PerolaSkyIllustrationTo} alt="PerolaSkyIllustration" />
+              <img src={items[5].img} alt="PerolaSkyIllustration" />
             </picture>
           </div>
         </div>

@@ -1,28 +1,21 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
+
 import { Navigation, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import card1 from '../../assets/img/accompaniment-card-1.jpg';
-import card2 from '../../assets/img/accompaniment-card-2.jpg';
-import card3 from '../../assets/img/accompaniment-card-3.jpg';
-import card4 from '../../assets/img/accompaniment-card-4.jpg';
-import card5 from '../../assets/img/accompaniment-card-5.jpg';
-
 export default function Accompaniment() {
+  const { items } = React.useContext(ItemsContext);
+
   return (
     <section
       className="section-h-trigger possibilities section section-gray section-accompaniment"
       data-section-trigger="light">
       <div className="container">
         <div className="title-lined">
-          <div>
-            Мы будем рядом <span>на протяжении всего пути</span>
-          </div>
+          <div>{items[6].titel}</div>
         </div>
-        <div className="def-text">
-          Вы можете воспользоваться услугой <span>личного сопровождения</span> для вас или ваших
-          близких во время перелёта.
-        </div>
+        <div className="def-text">{items[6].text}</div>
         <div className="swiper-container swiper-possibilities swiper-accompaniment ">
           <Swiper
             slidesPerView={'auto'}
@@ -34,46 +27,16 @@ export default function Accompaniment() {
               hide: true,
             }}
             modules={[Scrollbar, Navigation]}>
-            <SwiperSlide>
-              <div className="possibilities-preview">
-                <div>
-                  <img src={card1} alt="" />
+            {items[6].slider.map((slider) => (
+              <SwiperSlide>
+                <div className="possibilities-preview">
+                  <div>
+                    <img src={slider.img} alt="" />
+                  </div>
+                  <div>{slider.titel}</div>
                 </div>
-                <div>Перелеты с детьми до 18 лет</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="possibilities-preview">
-                <div>
-                  <img src={card2} alt="" />
-                </div>
-                <div>Транспортировка домашних животных</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="possibilities-preview">
-                <div>
-                  <img src={card3} alt="" />
-                </div>
-                <div>Медицинское сопровождение</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="possibilities-preview">
-                <div>
-                  <img src={card4} alt="" />
-                </div>
-                <div>Помощь людям со специальными потребностями </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="possibilities-preview">
-                <div>
-                  <img src={card5} alt="" />
-                </div>
-                <div>Личная охрана</div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
