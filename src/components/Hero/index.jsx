@@ -1,4 +1,5 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
 
 import HeroVideo from '../../assets/img/hero-video.mp4';
 

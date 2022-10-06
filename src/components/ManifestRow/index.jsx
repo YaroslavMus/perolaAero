@@ -1,4 +1,5 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

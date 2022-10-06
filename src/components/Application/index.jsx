@@ -1,4 +1,5 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
 
 export default function Application({frontData}) {
   return (

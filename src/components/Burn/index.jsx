@@ -1,4 +1,5 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
 
 import bac1 from '../../assets/img/Burn/history_1920px.jpg';
 import bac2 from '../../assets/img/Burn/history_1440px.jpg';
@@ -11,9 +12,9 @@ export default function SliderPanorama({frontData}) {
       <div className="burn">
         <div className="burn-bg">
           <picture>
-            <source type='image/jpeg' media="(max-width: 1440px)" srcSet={bac2} />
-            <source type='image/jpeg' media="(max-width: 770px)" srcSet={bac3} />
-            <source type='image/jpeg' media="(max-width: 320px)" srcSet={bac4} />
+            <source type="image/jpeg" media="(max-width: 1440px)" srcSet={bac2} />
+            <source type="image/jpeg" media="(max-width: 770px)" srcSet={bac3} />
+            <source type="image/jpeg" media="(max-width: 320px)" srcSet={bac4} />
             <img src={bac1} alt="" />
           </picture>
         </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { ItemsContext } from '../../App';
+
 import { Navigation, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 

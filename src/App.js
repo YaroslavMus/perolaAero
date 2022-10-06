@@ -18,6 +18,8 @@ import Cursor from './components/Cursor';
 import './style/normalize.css';
 import './style/style.css';
 
+export const ItemsContext = React.createContext();
+
 function App() {
   const [front, setFront] = React.useState([]);
   
