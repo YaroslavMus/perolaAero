@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default function Application() {
+export default function Application({frontData}) {
   return (
     <section className="section-h-trigger section section-application">
       <div className="container">
         <div className="title-lined">
-          <div>расчет стоимости</div>
+          <div dangerouslySetInnerHTML={{__html: frontData.front_s7_title}}></div>
         </div>
         <div className="def-text">
-          <p>Оставьте заявку и мы рассчитаем расходы для Вас согласно услуге.</p>
+          <p dangerouslySetInnerHTML={{__html: frontData.front_s7_subtitle}}></p>
           <div className="pos-button">
-            <button>оставить заявку</button>
+            <button dangerouslySetInnerHTML={{__html: frontData.front_s7_button}}></button>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 import MobMenu from './MobMenu';
 
-export default function Header() {
+export default function Header({frontData}) {
   const [isHederScroll, setIsHederScroll] = React.useState(0);
 
   const handleScroll = () => {
@@ -22,9 +22,9 @@ export default function Header() {
       <header className={isHederScroll < 100 ? 'header' : 'header header-state-scrolling'}>
         <div className="container-fluid">
           <div className="header-row">
-            <HeaderNav />
+            <HeaderNav frontData={frontData} />
             <HeaderLogo />
-            <HeaderContacts />
+            <HeaderContacts frontData={frontData} />
             <Hamburger />
           </div>
         </div>

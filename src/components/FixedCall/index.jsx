@@ -7,14 +7,11 @@ const openModal = () => {
   $('body').addClass('no-scroll');
 };
 
-export default function FixedCall() {
+export default function FixedCall({frontData}) {
   return (
     <div className="fixed-call">
       <div className="fixed-call-body" onClick={openModal}></div>
-      <div className="fixed-call-text">
-        Оформить <br />
-        заявку
-      </div>
+      <div className="fixed-call-text" dangerouslySetInnerHTML={{__html: frontData.site_order_button}}></div>
       <div className="fixed-call-mob">
         <svg
           width="28"

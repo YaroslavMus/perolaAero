@@ -26,13 +26,13 @@ const locale = {
     date: () => 'mm.dd.yyyy',
   },
 };
-export default function ModalOrderDate() {
+export default function ModalOrderDate({frontData}) {
   const [startDate, setStartDate] = React.useState(new Date());
 
   return (
     <div className="modal-order-date">
       <div className="modal-order-input">
-        <div className="modal-order-input-title">КОГДА</div>
+        <div className="modal-order-input-title">{frontData.site_modal_when}</div>
         <div className="modal-order-input-core icon-date ">
           <DatePicker
             className="input-calendar"

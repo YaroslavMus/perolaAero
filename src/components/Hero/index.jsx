@@ -2,19 +2,17 @@ import React from 'react';
 
 import HeroVideo from '../../assets/img/hero-video.mp4';
 
-export default function Hero() {
+export default function Hero({frontData}) {
   return (
     <section className="section-h-trigger hero" data-section-trigger="default">
       <video src={HeroVideo} autoPlay={true} loop={true} muted={'muted'}></video>
       <div className="container">
         <div className="hero-inner">
           <div>
-            <div>Everywhere. Everything. Now.</div>
+            <div dangerouslySetInnerHTML={{__html: frontData.front_upheader}}></div>
           </div>
           <div>
-            <div>
-              Ваш персональный консьерж-сервис <span>для международных доставок</span>
-            </div>
+            <div dangerouslySetInnerHTML={{__html: frontData.front_title}}></div>
           </div>
         </div>
       </div>

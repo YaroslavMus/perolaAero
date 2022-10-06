@@ -1,10 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
 import { gsap } from 'gsap';
+import {currentLanguage} from '../Config';
 
 import ModalThanks from './ModalThanks';
 
-export default function ModalStepRight() {
+export default function ModalStepRight({frontData}) {
   const modalThanks = (e) => {
     e.preventDefault();
     $('.step-back-mob').removeClass('active');
@@ -16,6 +17,17 @@ export default function ModalStepRight() {
       duration: 0,
     });
   };
+
+  let personal = '';
+
+  if( currentLanguage === 'ru' ) {
+    personal = <div className="form-line form-line-checkbox">
+                <label>
+                  <input type="checkbox" className="checkbox-core" />
+                  <span className="checkbox-view"></span>{frontData.site_modal_personal}
+                </label>
+              </div>;
+  }
   return (
     <div className="modal-step">
       <div className="modal-info-holder">
@@ -25,14 +37,14 @@ export default function ModalStepRight() {
               <div className="swiper-container info-swiper">
                 <div className="swiper-wrapper">
                   <div className="swiper-slide">
-                    <div className="modal-info-title">ИНформация о доставке</div>
+                    <div className="modal-info-title">{frontData.site_modal_delivery_info}</div>
                     <div className="modal-info-list">
                       <div>Шереметьево (SVO)</div>
                       <div>Ницца (NCE)</div>
                     </div>
                     <div className="modal-info-bottom">
                       <div className="modal-info-date">20.06.2021</div>
-                      <div className="modal-info-count">Доставка</div>
+                      <div className="modal-info-count">{frontData.site_modal_delivery_name}</div>
                       <div className="modal-info-count">От аэропорта до аэропорта</div>
                     </div>
                   </div>
@@ -43,18 +55,17 @@ export default function ModalStepRight() {
           <div className="modal-info-right">
             <form className="info-form">
               <div>
-                <input type="text" placeholder="Имя" />
+                <input type="text" placeholder={frontData.site_modal_form_name} />
               </div>
               <div>
-                <input type="text" placeholder="Телефон" />
+                <input type="text" placeholder={frontData.site_modal_form_phone} />
               </div>
               <div>
-                <input type="text" placeholder="E-mail" />
+                <input type="text" placeholder={frontData.site_modal_form_email} />
               </div>
               <div>
                 <textarea
-                  placeholder="Опишите содержание багажа, приблизительные габариты,
-вес и количество мест"></textarea>
+                  placeholder={frontData.site_modal_form_comment}></textarea>
               </div>
             </form>
           </div>
@@ -64,23 +75,17 @@ export default function ModalStepRight() {
             <div className="form-line form-line-checkbox">
               <label>
                 <input type="checkbox" className="checkbox-core" />
-                <span className="checkbox-view"></span>Я принимаю условия Политики
-                конфиденциальности
+                <span className="checkbox-view"></span>{frontData.site_modal_policy}
               </label>
             </div>
-            <div className="form-line form-line-checkbox">
-              <label>
-                <input type="checkbox" className="checkbox-core" />
-                <span className="checkbox-view"></span>Я соглашаюсь на обработку персональных данных
-              </label>
-            </div>
+            {personal}
           </div>
           <div>
             <input type="submit" className="modal-info-btn" onClick={modalThanks} />
           </div>
         </div>
       </div>
-      <ModalThanks />
+      <ModalThanks frontData={frontData} />
     </div>
   );
 }

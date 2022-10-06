@@ -13,8 +13,8 @@ export default function FixedClose() {
     $('.fixed-modal-overlay').removeClass('active');
     $('.modal').removeClass('active');
     $('body').removeClass('no-scroll');
-    $('.modal-info-holder').css({ display: 'block' });
-    $('.modal-thanks').css({ display: 'none' });
+    $('.modal-info-holder').css('display', 'block');
+    $('.modal-thanks').css('display', 'none');
     $('.modal').css({ overflowY: 'inherit' });
   };
   return (

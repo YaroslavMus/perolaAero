@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,7 +9,7 @@ import ModalStepLeft from './ModalStepLeft';
 
 import modalLogo from '../../assets/img/logo-footer.svg';
 
-export default function Modal() {
+export default function Modal({frontData}) {
   return (
     <div className="modal">
       <FixedClose />
@@ -23,19 +22,19 @@ export default function Modal() {
           <div>
             <input type="radio" name="radio" id="one" />
             <label className="modal-nav-input" htmlFor="one">
-              доставка
+              {frontData.site_modal_header1}
             </label>
           </div>
           <div>
             <input type="radio" name="radio" id="two" />
             <label className="modal-nav-input" htmlFor="two">
-              сопровождение
+              {frontData.site_modal_header2}
             </label>
           </div>
         </div>
         <div className="modal-steps">
-          <ModalStepLeft />
-          <ModalStepRight />
+          <ModalStepLeft frontData={frontData} />
+          <ModalStepRight frontData={frontData} />
         </div>
       </div>
     </div>

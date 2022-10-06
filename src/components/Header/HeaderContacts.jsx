@@ -1,14 +1,39 @@
 import React from 'react';
+import {currentLanguage} from '../Config.js';
 
-export default function HeaderContacts() {
+export default function HeaderContacts({frontData}) {
+  let displayLanguage = 'en';
+
+  if( currentLanguage === 'ru' ) {
+    displayLanguage = 'en';
+  } else {
+    displayLanguage = 'ru';
+  }
+
+  const [selectedLanguage, setSelectedLanguage] = React.useState(null);
+
+  const changeLanguage = () => {
+    let currentLang = localStorage.getItem('currentLanguage');
+    switch (currentLang) {
+      case 'en':
+        localStorage.setItem('currentLanguage', 'ru');
+        currentLang = 'ru';
+        break;
+      default:
+        localStorage.setItem('currentLanguage', 'en');
+        currentLang = 'en';
+    }
+    setSelectedLanguage(currentLang);
+  }
+
   return (
     <div className="header-contacts">
       <ul>
         <li>
-          <a href="tel:+7 999 224 71 23"> +7 999 224 71 23 </a>
+          <a href={'tel:' + frontData.site_phone}> {frontData.site_phone} </a>
         </li>
         <li>
-          <a href="#" className="social-link">
+          <a href={frontData.site_telegram} className="social-link">
             <svg
               width="20"
               height="20"
@@ -27,7 +52,7 @@ export default function HeaderContacts() {
           </a>
         </li>
         <li>
-          <a href=""> EN </a>
+          <a href="" onClick={changeLanguage}> {displayLanguage} </a>
         </li>
       </ul>
     </div>

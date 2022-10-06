@@ -2,9 +2,8 @@ import React from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import PerolaSkyIllustrationTo from '../../assets/img/Perola_Sky_Illustration_1_2.png';
 
-export default function ManifestRow() {
+export default function ManifestRow({frontData}) {
   React.useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -27,15 +26,12 @@ export default function ManifestRow() {
       <div className="container">
         <div className="manifest-row to">
           <div className="manifest-text">
-            <div className="title">ваше Спокойствие превыше всего</div>
-            <div className="desc-text">
-              <span>Каждая посылка застрахована</span>, а наш консьерж-курьер заберет и доставит
-              необходимую вещь лично в руки.
-            </div>
+            <div className="title" dangerouslySetInnerHTML={{__html: frontData.front_s5_title}}></div>
+            <div className="desc-text" dangerouslySetInnerHTML={{__html: frontData.front_s5_subtitle}}></div>
           </div>
           <div className="manifest-img">
             <picture>
-              <img src={PerolaSkyIllustrationTo} alt="PerolaSkyIllustration" />
+              <img src={frontData.front_s5_image} alt="PerolaSkyIllustration" />
             </picture>
           </div>
         </div>

@@ -1,21 +1,17 @@
 import React from 'react';
 
-export default function HeaderNav() {
+export default function HeaderNav({frontData}) {
+
+  if( !frontData.front_menu ) return null;
+  
   return (
     <div className="header-nav nav">
       <ul>
-        <li>
-          <a href="#"> доставка </a>
-        </li>
-        <li>
-          <a href="#"> сопровождение </a>
-        </li>
-        <li>
-          <a href="#"> стоимость </a>
-        </li>
-        <li>
-          <a href="#"> контакты </a>
-        </li>
+      {
+        frontData.front_menu.map((menu_item, index) =>
+            <li key={index}><a href={menu_item.link}>{menu_item.text}</a></li>
+        )
+      }
       </ul>
     </div>
   );
