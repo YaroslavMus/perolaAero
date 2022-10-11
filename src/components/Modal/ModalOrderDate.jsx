@@ -1,6 +1,5 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
-import $ from 'jquery';
 
 const days = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 const months = [
@@ -26,7 +25,7 @@ const locale = {
     date: () => 'mm.dd.yyyy',
   },
 };
-export default function ModalOrderDate({frontData}) {
+export default function ModalOrderDate({ frontData }) {
   const [startDate, setStartDate] = React.useState(new Date());
 
   return (
@@ -37,6 +36,7 @@ export default function ModalOrderDate({frontData}) {
           <DatePicker
             className="input-calendar"
             locale={locale}
+            onChan
             selected={startDate}
             onChange={(date) => setStartDate(date)}>
             <div className="datepicker-calendar-text">Выберите дату отправления</div>

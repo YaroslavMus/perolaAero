@@ -11,8 +11,9 @@ export default function StepBack() {
       duration: 0.5,
     });
     $('.step-back-mob').removeClass('active');
-    $('.modal-nav').css({ opacity: 1, display: 'flex' });
     $('.modal').css({ overflowY: 'inherit' });
+    $('.to').addClass('active');
+    $('.on').removeClass('active');
   };
   return (
     <div className="step-back-mob" onClick={stepBack}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-export default function ModalSelect({frontData}) {
+export default function ModalSelect({ frontData }) {
   const useSelect = () => {
     $('.select').on('click', function () {
       $('.select__list').toggleClass('open');
@@ -26,8 +26,12 @@ export default function ModalSelect({frontData}) {
       <div className="modal-order-input-title">{frontData.site_modal_type}</div>
       <div className="modal-order-input-core">
         <div className="select" onClick={useSelect}>
-          <input className="select__input" type="hidden" name="От аэропорта до аэропорта" />
-          <div className="select__head open"></div>
+          <input
+            className="select__input"
+            type="hidden"
+            defaultValue={'От аэропорта до аэропорта'}
+          />
+          <div className="select__head open">От аэропорта до аэропорта</div>
           <ul className="select__list">
             <li className="select__item">От аэропорта до аэропорта</li>
             <li className="select__item">От аэропорта до двери</li>

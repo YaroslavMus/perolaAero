@@ -1,10 +1,9 @@
 import React from 'react';
-import { ItemsContext } from '../../App';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function ManifestRow({ frontData }) {
+export default function ManifestRow({frontData}) {
   React.useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -27,12 +26,8 @@ export default function ManifestRow({ frontData }) {
       <div className="container">
         <div className="manifest-row">
           <div className="manifest-text">
-            <div
-              className="title"
-              dangerouslySetInnerHTML={{ __html: frontData.front_s2_title }}></div>
-            <div
-              className="desc-text"
-              dangerouslySetInnerHTML={{ __html: frontData.front_s2_subtitle }}></div>
+            <div className="title" dangerouslySetInnerHTML={{__html: frontData.front_s2_title}}></div>
+            <div className="desc-text" dangerouslySetInnerHTML={{__html: frontData.front_s2_subtitle}}></div>
           </div>
           <div className="manifest-img">
             <picture>

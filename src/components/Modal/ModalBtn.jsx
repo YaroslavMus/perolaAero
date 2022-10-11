@@ -6,17 +6,18 @@ export default function ModalBtn() {
   const modalSteps = (e) => {
     e.preventDefault();
     let modalStepWidth = $('.modal-step').innerWidth();
-    $('.modal-nav').css({ opacity: 0, display: 'none' });
     $('.modal').css({ overflowY: 'auto' });
     gsap.to($('.modal-steps'), {
       x: -modalStepWidth,
       duration: 0.5,
     });
     $('.step-back-mob').addClass('active');
+    $('.on').addClass('active');
+    $('.to').removeClass('active');
   };
   return (
     <div className="modal-btn">
-      <button className="submit-btn" defaultValue="Далее" onClick={modalSteps}>
+      <button type="submit" className="submit-btn" defaultValue="Далее" onClick={modalSteps}>
         Далее
       </button>
     </div>
